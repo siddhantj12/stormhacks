@@ -1,0 +1,59 @@
+{
+  "id": "case-001",
+  "title": "The Vanishing Symphony",
+  "brief": "Virtuoso pianist Aurelia Moreau vanished minutes before her concert...",
+  "scenes": [
+    {
+      "id": "theatre",
+      "title": "Theatre",
+      "bg": "/cases/001/scenes/theatre.jpg",
+      "hotspots": [
+        { "id": "piano", "label": "Piano", "rect": { "x": 0.28, "y": 0.62, "w": 0.22, "h": 0.20 }, "click": { "zoomToScene": "piano" }, "addsClues": ["clue_cracked_eb"] },
+        { "id": "secCam", "label": "Security Camera", "rect": { "x": 0.92, "y": 0.04, "w": 0.06, "h": 0.08 }, "click": { "unlockScene": "security" } }
+      ]
+    },
+    {
+      "id": "piano",
+      "title": "Piano (Close-up)",
+      "bg": "/cases/001/scenes/piano.jpg",
+      "hotspots": [
+        { "id": "ebKey", "label": "E-flat Key", "rect": { "x": 0.41, "y": 0.64, "w": 0.10, "h": 0.06 }, "click": { "interact": "press-eb" }, "addsClues": ["clue_hinge_shadow"] },
+        { "id": "backToStage", "label": "Back to Stage", "rect": { "x": 0.02, "y": 0.05, "w": 0.08, "h": 0.08 }, "click": { "zoomToScene": "theatre" } }
+      ]
+    },
+    {
+      "id": "security",
+      "title": "Security Room",
+      "bg": "/cases/001/scenes/security.jpg",
+      "hotspots": [
+        { "id": "cctv", "label": "CCTV Console", "rect": { "x": 0.35, "y": 0.38, "w": 0.30, "h": 0.22 }, "inspect": { "evidenceId": "IMG-03", "action": "open" }, "addsClues": ["clue_cctv_tampered"] },
+        { "id": "exportStill", "label": "Export Still", "rect": { "x": 0.72, "y": 0.64, "w": 0.18, "h": 0.10 }, "click": { "addEvidence": "IMG-03" } }
+      ]
+    },
+    {
+      "id": "dressing",
+      "title": "Dressing Room",
+      "bg": "/cases/001/scenes/dressing.jpg",
+      "hotspots": [
+        { "id": "note", "label": "Note on Vanity", "rect": { "x": 0.52, "y": 0.36, "w": 0.18, "h": 0.12 }, "inspect": { "evidenceId": "DOC-01", "action": "open" } },
+        { "id": "sheet", "label": "Music Sheet", "rect": { "x": 0.22, "y": 0.58, "w": 0.22, "h": 0.16 }, "inspect": { "evidenceId": "IMG-02", "action": "ocr" } }
+      ],
+      "lockedUntil": { "cluesFoundAny": ["clue_cctv_tampered"] }
+    }
+  ],
+  "evidence": [
+    { "id": "IMG-01", "type": "image", "title": "Stage Photo", "src": "/cases/001/stage.jpg" },
+    { "id": "IMG-02", "type": "image", "title": "Music Sheet", "src": "/cases/001/sheet.jpg" },
+    { "id": "IMG-03", "type": "image", "title": "Security Still", "src": "/cases/001/cctv.jpg" },
+    { "id": "DOC-01", "type": "image", "title": "Dressing-Room Note", "src": "/cases/001/note.jpg" }
+  ],
+  "clues": [
+    { "id": "clue_cracked_eb", "label": "Cracked E-flat Key", "evidenceId": "IMG-01" },
+    { "id": "clue_hinge_shadow", "label": "Hinge Shadow Under Key", "evidenceId": "IMG-01" },
+    { "id": "clue_reflection_mismatch", "label": "Mirror Reflection Mismatch", "evidenceId": "IMG-01" },
+    { "id": "clue_cctv_tampered", "label": "CCTV Still Tampered", "evidenceId": "IMG-03" },
+    { "id": "clue_strike_thrice", "label": "Note: 'Strike E-flat Thrice'", "evidenceId": "DOC-01" },
+    { "id": "clue_ebad_pattern", "label": "Margin Code: E♭ A D 13 21", "evidenceId": "IMG-02" }
+  ],
+  "homeBase": { "unlocksWhen": { "unlockedScenesAtLeast": 2 } }
+}
