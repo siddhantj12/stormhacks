@@ -30,7 +30,7 @@ export default function ClueDrawer({ evidenceId, onClose }: { evidenceId: string
       <button onClick={onClose} className="mb-4">Close</button>
       <h3 className="font-bold text-lg">{evidence.title}</h3>
       <div className="relative w-full h-64 my-4">
-        <Image src={evidence.src} alt={evidence.alt || evidence.title} layout="fill" objectFit="contain" />
+        <Image src={evidence.src} alt={evidence.alt || evidence.title} fill className="object-contain" />
       </div>
       
       {/* TODO(design): Style the chat/ask section */}

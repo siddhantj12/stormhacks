@@ -1,20 +1,15 @@
-import { Board } from '@/components/board/Board'
-import { BoardShell } from '@/components/board/BoardShell'
+import BoardShell from '@/components/board/BoardShell'
 import { getCaseServer } from '@/lib/cases.server'
 
 type BoardPageProps = {
-  params: {
+  params: Promise<{
     caseId: string
-  }
+  }>
 }
 
 export default async function BoardPage({ params }: BoardPageProps) {
-  const { caseId } = params
+  const { caseId } = await params
   const c = await getCaseServer(caseId)
 
-  return (
-    <BoardShell caseId={caseId}>
-      <Board case={c} />
-    </BoardShell>
-  )
+  return <BoardShell caseId={caseId} />
 }

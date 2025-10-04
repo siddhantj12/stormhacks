@@ -2,14 +2,14 @@ import SceneShell from '@/components/scene/SceneShell'
 import { getCaseServer } from '@/lib/cases.server'
 
 type ScenePageProps = {
-  params: {
+  params: Promise<{
     caseId: string
     sceneId: string
-  }
+  }>
 }
 
 export default async function ScenePage({ params }: ScenePageProps) {
-  const { caseId, sceneId } = { ...params } // Create a new object
+  const { caseId, sceneId } = await params
   const c = await getCaseServer(caseId)
 
   return <SceneShell initialCaseData={c} caseId={caseId} sceneId={sceneId} />

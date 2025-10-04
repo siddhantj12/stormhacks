@@ -42,7 +42,7 @@ export default function SceneCanvas({ scene, onInteract, onUnlockScene, onAddClu
 
   return (
     <div className={`w-full h-full relative ${animationClass}`}>
-      <Image src={scene.bg} alt={scene.title} layout="fill" objectFit="cover" priority />
+      <Image src={scene.bg} alt={scene.title} fill className="object-cover" priority />
       
       <div className="absolute inset-0">
         {scene.hotspots.map(hotspot => (
