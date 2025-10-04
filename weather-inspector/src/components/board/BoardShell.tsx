@@ -12,6 +12,13 @@ import { getCaseClient } from '@/lib/cases';
 
 // TODO(design): Style the board, nodes, edges, and modal.
 
+interface SuggestedEdge { // NEW: Define SuggestedEdge interface
+  from: string;
+  to: string;
+  reason: string;
+  suggested: boolean;
+}
+
 export default function BoardShell({ caseId }: { caseId: string }) {
   const router = useRouter();
   const { caseData, loadCase, foundClues, canAccessBoard } = useGameStore();
@@ -52,7 +59,7 @@ export default function BoardShell({ caseId }: { caseId: string }) {
       body: JSON.stringify({ clues: cluesForApi }),
     });
     const data = await res.json();
-    const suggestedEdges = data.edges.map((edge: any) => ({
+    const suggestedEdges = data.edges.map((edge: SuggestedEdge) => ({
       ...edge,
       id: `${edge.from}-${edge.to}`,
       animated: true,
@@ -103,7 +110,7 @@ export default function BoardShell({ caseId }: { caseId: string }) {
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-white p-8 rounded-lg w-1/2">
             {!result ? (
-              <>
+              <> 
                 <h2 className="text-2xl font-bold mb-4">Submit Your Theory</h2>
                 <textarea
                   className="w-full h-48 p-2 border"

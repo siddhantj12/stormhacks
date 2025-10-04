@@ -2,10 +2,10 @@
 'use client'
 
 import { useCallback, useEffect, useRef } from 'react'
-import ReactFlow, { addEdge, useEdgesState, useNodesState } from 'reactflow'
+import ReactFlow, { addEdge, useEdgesState, useNodesState, Connection } from 'reactflow' // Import Connection
 import 'reactflow/dist/style.css'
 
-import { Case } from '@/lib/types'
+import { CaseClient } from '@/lib/types' // Changed Case to CaseClient
 import { Card } from './Card'
 import { Clue } from './Clue'
 import { Evidence } from './Evidence'
@@ -19,7 +19,7 @@ const nodeTypes = {
 }
 
 type BoardProps = {
-  case: Case
+  case: CaseClient // Changed Case to CaseClient
 }
 
 export function Board({ case: c }: BoardProps) {
@@ -28,7 +28,7 @@ export function Board({ case: c }: BoardProps) {
   const [edges, setEdges, onEdgesChange] = useEdgesState(c.board.edges)
 
   const onConnect = useCallback(
-    (connection: any) => setEdges((eds) => addEdge(connection, eds)),
+    (connection: Connection) => setEdges((eds) => addEdge(connection, eds)), // Changed any to Connection
     [setEdges]
   )
 

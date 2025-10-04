@@ -22,7 +22,7 @@ export type Scene = {
   id: string;
   title: string;
   bg: string;
-  lockedUntil?: any; // Simplified for now
+  lockedUntil?: { cluesFoundAny: string[] }; // Fixed type
   hotspots: Hotspot[];
 };
 
@@ -53,6 +53,12 @@ export type CaseAnswer = {
     A: string;
     F: string;
   };
+};
+
+export type Update = { // NEW: Update type
+  id: string;
+  message: string;
+  timestamp: number;
 };
 
 export type MockAskResponse = {
