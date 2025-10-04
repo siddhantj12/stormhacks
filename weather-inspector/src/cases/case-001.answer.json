@@ -1,0 +1,21 @@
+{
+  "id": "case-001",
+  "solution": {
+    "mustInclude": ["clue_strike_thrice", "clue_ebad_pattern"],
+    "someOf": [
+      {
+        "clues": ["clue_cracked_eb", "clue_hinge_shadow"],
+        "count": 1
+      },
+      {
+        "clues": ["clue_cctv_tampered", "clue_reflection_mismatch"],
+        "count": 1
+      }
+    ]
+  },
+  "feedback": {
+    "S": "Astounding work, Inspector. You pieced together the hidden messages and the mechanism with flawless logic. Aurelia left a trail only a true virtuoso of deduction could follow. Case closed.",
+    "A": "Excellent work. You caught the key clues about the piano and the coded messages. A few minor details might have been overlooked, but you successfully uncovered the core of the mystery.",
+    "F": "A solid attempt, but the central puzzle remains unsolved. The clues within the sheet music and the note were critical. Perhaps a fresh look at the evidence is in order."
+  }
+}
