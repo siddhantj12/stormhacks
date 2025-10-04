@@ -1,0 +1,12 @@
+{
+  "id": "case-001",
+  "grading": {
+    "mustInclude": ["cctv", "tampered"],
+    "someOf": ["note", "threat", "rival"]
+  },
+  "endings": {
+    "S": "A masterful deduction! You realized the CCTV footage was looped and the 'threatening' note was a red herring planted by the rival conductor. Alistair wasn't kidnapped; he staged it all to escape the pressures of his career. You found him at the old jazz club downtown.",
+    "A": "A solid theory. You correctly identified that the tampered CCTV footage was the key to the case, but missed the nuance of the note being a plant. You rescued Alistair, but the rival got away clean.",
+    "F": "You got lost in the performance. You focused too much on the sheet music and missed the critical technical evidence. By the time you pieced it together, Alistair's rival had already vanished, along with any chance of solving the case."
+  }
+}
