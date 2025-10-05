@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
+import '@/styles/weather-figma.css'; // NEW: Import weather-figma.css
 import { ThemeProvider } from '@/lib/theme'; // Only import ThemeProvider
 import LayoutContent from '@/components/layout-content'; // Import LayoutContent
 

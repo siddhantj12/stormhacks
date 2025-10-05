@@ -1,0 +1,1254 @@
+/* Scope + helpers */
+.figma-weather { position: relative; width:1512px; height:982px; background:#FFFFFF; }
+.figma-weather * { box-sizing: border-box; }
+.figma-weather .abs { position: absolute; pointer-events: none; }
+.figma-weather .figma-cloud { position:absolute; background: transparent; border: 0; cursor: pointer; }
+
+/* map your two cloud hit areas (from your Figma numbers) */
+.figma-weather .cloud-1 { left:149px; top:722px; width:62px; height:43.26px; }
+.figma-weather .cloud-2 { left:698px; top:716px; width:62px; height:43.26px; }
+
+/* optional dev visual so you can click easily – remove later */
+.figma-weather .figma-cloud::after {
+  content:''; position:absolute; inset:0; background:url('/icons/cloud.svg') center/contain no-repeat; opacity:.65;
+}
+
+/* ----- PASTE YOUR RAW FIGMA CSS BELOW, BUT PREFIX ALL RULES WITH .figma-weather ----- */
+
+.figma-weather .macbook-pro-14-6 {
+  position: relative;
+  width: 1512px;
+  height: 982px;
+  background: #FFFFFF;
+}
+
+.figma-weather .unsplash-bg {
+  position: absolute;
+  width: 1512px;
+  height: 1008px;
+  left: 0px;
+  top: 0px;
+  background: url('/bg/weather-hero.jpg');
+  background-size: cover;
+}
+
+/* Reusable card styles */
+.figma-weather .card-base {
+  position: absolute;
+  width: 161px;
+  height: 161px;
+  background: rgba(177, 191, 191, 0.5);
+  border-radius: 18px;
+}
+
+/* Precipitation Card */
+.figma-weather .precip-card-wrapper {
+  left: 268px;
+  top: 483px;
+}
+
+.figma-weather .precip-card-label {
+  left: 309px;
+  top: 494px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.07em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.figma-weather .precip-card-value {
+  left: 283.58px;
+  top: 520.68px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  color: #FFFFFF;
+}
+
+.figma-weather .precip-card-sub-value {
+  left: 284px;
+  top: 604px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.07em;
+  color: #FFFFFF;
+}
+
+.figma-weather .precip-card-icon {
+  left: 284px;
+  top: 492px;
+  background: url('/icons/humidity.svg'); /* Assuming humidity icon for precipitation */
+  opacity: 0.61;
+}
+
+/* Location Card */
+.figma-weather .location-card-wrapper {
+  left: 92px;
+  top: 483px;
+}
+
+.figma-weather .location-card-label {
+  left: 139px;
+  top: 492px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.07em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.figma-weather .location-card-city {
+  left: 108px;
+  top: 535px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 27px;
+  color: #FFFFFF;
+}
+
+.figma-weather .location-card-date {
+  left: 108px;
+  top: 604px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.07em;
+  color: #FFFFFF;
+}
+
+.figma-weather .location-card-icon {
+  left: calc(50% - 16px/2 - 633px);
+  top: calc(50% - 22px/2 + 14px);
+  background: url('/icons/location.svg'); /* Assuming a location icon */
+  width: 16px;
+  height: 22px;
+}
+
+/* UV Index Card */
+.figma-weather .uv-card-wrapper {
+  left: 620px;
+  top: 483px;
+}
+
+.figma-weather .uv-card-label {
+  left: 666.74px;
+  top: 494.42px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.07em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.figma-weather .uv-card-value {
+  left: 635.58px;
+  top: 520.68px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  color: #FFFFFF;
+}
+
+.figma-weather .uv-card-icon {
+  left: 633px;
+  top: 490px;
+  background: url('/icons/sun.svg');
+  opacity: 0.61;
+  width: 22.8px;
+  height: 22.8px;
+}
+
+/* Wind Card */
+.figma-weather .wind-card-wrapper {
+  left: 444px;
+  top: 483px;
+}
+
+.figma-weather .wind-card-label {
+  left: 490.74px;
+  top: 494.42px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.07em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.figma-weather .wind-card-value {
+  left: 457px;
+  top: 512px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  letter-spacing: 0.07em;
+  color: #FFFFFF;
+}
+
+.figma-weather .wind-card-icon {
+  left: 457px;
+  top: 490px;
+  background: url('/icons/wind.svg');
+  opacity: 0.61;
+  width: 22.8px;
+  height: 22.8px;
+}
+
+/* Sunrise Card */
+.figma-weather .sunrise-card-wrapper {
+  left: 796px;
+  top: 483px;
+}
+
+.figma-weather .sunrise-card-label {
+  left: 842.74px;
+  top: 494.42px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.07em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.figma-weather .sunrise-card-value {
+  left: 812px;
+  top: 521px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  color: #FFFFFF;
+}
+
+.figma-weather .sunrise-card-sub-value {
+  left: 812px;
+  top: 616px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.07em;
+  color: #FFFFFF;
+}
+
+.figma-weather .sunrise-card-icon {
+  left: 53.7%;
+  right: 44.79%;
+  top: 49.8%;
+  bottom: 47.88%;
+  background: url('/icons/sun.svg');
+  opacity: 0.61;
+}
+
+.figma-weather .sunrise-card-line {
+  left: 796px;
+  top: 606.5px;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  width: 161px;
+  height: 0px;
+}
+
+/* Info Header */
+.figma-weather .info-header-wrapper {
+  left: 92px;
+  top: 167px;
+  width: 417px;
+  height: 302px;
+}
+
+.figma-weather .info-header-condition {
+  left: 92px;
+  top: 222px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 58px;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+  width: 417px;
+  height: 47px;
+}
+
+.figma-weather .info-header-location-time-panel {
+  left: 92px;
+  top: 167px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 5px;
+  width: 176px;
+  height: 30px;
+}
+
+.figma-weather .info-header-location-time-panel .icon-wrapper {
+  width: 30px;
+  height: 30px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.figma-weather .info-header-location-time-panel .location-icon {
+  left: calc(50% - 18px/2);
+  top: calc(50% - 25px/2 - 0.5px);
+  background: url('/icons/location.svg'); /* Placeholder for location icon */
+  width: 18px;
+  height: 25px;
+}
+
+.figma-weather .info-header-location-time-panel .location-text {
+  width: 125px;
+  height: 24px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  color: #FFFFFF;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.figma-weather .info-header-location-time-panel .separator {
+  width: 19px;
+  height: 9px;
+  border: 2px solid #FFFFFF;
+  transform: rotate(-90deg);
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+
+.figma-weather .info-header-big-temp {
+  left: 93px;
+  top: 301px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 128px;
+  line-height: 106px;
+  color: #FFFFFF;
+  width: 256px;
+  height: 101px;
+}
+
+.figma-weather .info-header-date-text {
+  left: 93px;
+  top: 413px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #FFFFFF;
+  width: 205px;
+  height: 28px;
+}
+
+.figma-weather .info-header-time-text {
+  left: 93px;
+  top: 441px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #FFFFFF;
+  width: 205px;
+  height: 28px;
+}
+
+/* Hourly Forecast Panel */
+.figma-weather .hourly-forecast-panel-wrapper {
+  left: 1102px;
+  top: 183px;
+  width: 345px;
+  height: 749px;
+  background: rgba(177, 191, 191, 0.6);
+}
+
+.figma-weather .hourly-forecast-panel-header {
+  left: 1143px;
+  top: 220px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  color: #000000;
+  width: 264px;
+  height: 25px;
+}
+
+.figma-weather .hourly-forecast-panel-divider {
+  left: 1146px;
+  top: 264px;
+  border: 1px solid rgba(255, 255, 255, 0.23);
+  transform: rotate(-180deg);
+  width: 301px;
+  height: 0px;
+}
+
+/* Hourly Item Base */
+.figma-weather .hourly-item-base {
+  position: absolute;
+  width: 275.21px;
+  height: 38.25px; /* This will vary, so use a common height */
+  left: 1135px;
+}
+
+.figma-weather .hourly-item-base .time {
+  width: 70px;
+  height: 23px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.figma-weather .hourly-item-base .temp {
+  width: 36.42px;
+  height: 21.48px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.figma-weather .hourly-item-base .wind-speed {
+  width: 56px;
+  height: 16px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #373B40;
+}
+
+.figma-weather .hourly-item-base .icon-wrapper {
+  width: 56px;
+  height: 38.25px;
+}
+
+.figma-weather .hourly-item-base .weather-icon {
+  background: #373B40; /* Placeholder for actual icon */
+}
+
+.figma-weather .hourly-item-base .line-group {
+  width: 144.62px;
+  height: 4.78px;
+}
+
+.figma-weather .hourly-item-base .ellipse-34 {
+  width: 4.78px;
+  height: 4.78px;
+  background: #FFFFFF;
+  transform: rotate(90deg);
+}
+
+.figma-weather .hourly-item-base .ellipse-35 {
+  width: 4.78px;
+  height: 4.78px;
+  background: #FFFFFF;
+  transform: rotate(-90deg);
+}
+
+.figma-weather .hourly-item-base .line-1 {
+  width: 28.68px;
+  height: 0px;
+  border: 1.02356px dashed #373B40;
+  transform: rotate(-180deg);
+}
+
+.figma-weather .hourly-item-base .line-2 {
+  width: 28.68px;
+  height: 0px;
+  border: 1.02356px dashed #373B40;
+}
+
+/* Specific hourly items */
+.figma-weather .hourly-item-1 {
+  top: 282.75px;
+}
+.figma-weather .hourly-item-1 .time {
+  left: 1135px;
+  top: 290px;
+}
+.figma-weather .hourly-item-1 .temp {
+  left: 1373.79px;
+  top: 291.15px;
+}
+.figma-weather .hourly-item-1 .wind-speed {
+  left: 1264px;
+  top: 305px;
+}
+.figma-weather .hourly-item-1 .icon-wrapper {
+  left: 1264px;
+  top: 282.75px;
+}
+.figma-weather .hourly-item-1 .weather-icon {
+  width: 22.42px;
+  height: 22.42px;
+  left: 1277.59px;
+  top: 282.75px;
+}
+.figma-weather .hourly-item-1 .line-group {
+  left: 1216.88px;
+  top: 302.24px;
+}
+.figma-weather .hourly-item-1 .ellipse-34 {
+  top: 302.24px;
+}
+.figma-weather .hourly-item-1 .ellipse-35 {
+  top: 302.24px;
+}
+.figma-weather .hourly-item-1 .line-1 {
+  top: 304.1px;
+}
+.figma-weather .hourly-item-1 .line-2 {
+  top: 305.15px;
+}
+
+
+.figma-weather .hourly-item-2 {
+  top: 338.79px;
+}
+.figma-weather .hourly-item-2 .time {
+  top: 344px;
+}
+.figma-weather .hourly-item-2 .temp {
+  top: 345.32px;
+}
+.figma-weather .hourly-item-2 .wind-speed {
+  top: 359px;
+}
+.figma-weather .hourly-item-2 .icon-wrapper {
+  left: 1264px;
+  top: 338.79px;
+}
+.figma-weather .hourly-item-2 .weather-icon {
+  width: 17.75px;
+  height: 17.75px;
+  left: 1279.46px;
+  top: 338.79px;
+}
+.figma-weather .hourly-item-2 .line-group {
+  left: 1216.88px;
+  top: 358.27px;
+}
+.figma-weather .hourly-item-2 .ellipse-34 {
+  top: 358.27px;
+}
+.figma-weather .hourly-item-2 .ellipse-35 {
+  top: 358.27px;
+}
+.figma-weather .hourly-item-2 .line-1 {
+  top: 360.14px;
+}
+.figma-weather .hourly-item-2 .line-2 {
+  top: 361.19px;
+}
+
+.figma-weather .hourly-item-3 {
+  top: 392.96px;
+}
+.figma-weather .hourly-item-3 .time {
+  top: 399px;
+}
+.figma-weather .hourly-item-3 .temp {
+  top: 399.49px;
+}
+.figma-weather .hourly-item-3 .wind-speed {
+  top: 413px;
+}
+.figma-weather .hourly-item-3 .icon-wrapper {
+  left: 1264px;
+  top: 392.96px;
+}
+.figma-weather .hourly-item-3 .weather-icon {
+  width: 19.61px;
+  height: 19.61px;
+  left: 1278.52px;
+  top: 392.96px;
+}
+.figma-weather .hourly-item-3 .line-group {
+  left: 1216.88px;
+  top: 412.44px;
+}
+.figma-weather .hourly-item-3 .ellipse-34 {
+  top: 412.44px;
+}
+.figma-weather .hourly-item-3 .ellipse-35 {
+  top: 412.44px;
+}
+.figma-weather .hourly-item-3 .line-1 {
+  top: 414.31px;
+}
+.figma-weather .hourly-item-3 .line-2 {
+  top: 415.36px;
+}
+
+.figma-weather .hourly-item-4 {
+  top: 444.33px;
+}
+.figma-weather .hourly-item-4 .time {
+  top: 453px;
+}
+.figma-weather .hourly-item-4 .temp {
+  top: 453.67px;
+}
+.figma-weather .hourly-item-4 .wind-speed {
+  top: 467px;
+}
+.figma-weather .hourly-item-4 .icon-wrapper {
+  left: 1264px;
+  top: 444.33px;
+}
+.figma-weather .hourly-item-4 .weather-icon {
+  width: 22.94px;
+  height: 22.94px;
+  left: 1277.74px;
+  top: 444.33px;
+}
+.figma-weather .hourly-item-4 .line-group {
+  left: 1216.88px;
+  top: 463.81px;
+}
+.figma-weather .hourly-item-4 .ellipse-34 {
+  top: 463.81px;
+}
+.figma-weather .hourly-item-4 .ellipse-35 {
+  top: 463.81px;
+}
+.figma-weather .hourly-item-4 .line-1 {
+  top: 465.68px;
+}
+.figma-weather .hourly-item-4 .line-2 {
+  top: 466.73px;
+}
+
+.figma-weather .hourly-item-5 {
+  top: 498.5px;
+}
+.figma-weather .hourly-item-5 .time {
+  top: 507px;
+}
+.figma-weather .hourly-item-5 .temp {
+  top: 507.84px;
+}
+.figma-weather .hourly-item-5 .wind-speed {
+  top: 521px;
+}
+.figma-weather .hourly-item-5 .icon-wrapper {
+  left: 1264px;
+  top: 498.5px;
+}
+.figma-weather .hourly-item-5 .weather-icon {
+  width: 22.94px;
+  height: 22.94px;
+  left: 1277.74px;
+  top: 498.5px;
+}
+.figma-weather .hourly-item-5 .line-group {
+  left: 1216.88px;
+  top: 517.98px;
+}
+.figma-weather .hourly-item-5 .ellipse-34 {
+  top: 517.98px;
+}
+.figma-weather .hourly-item-5 .ellipse-35 {
+  top: 517.98px;
+}
+.figma-weather .hourly-item-5 .line-1 {
+  top: 519.85px;
+}
+.figma-weather .hourly-item-5 .line-2 {
+  top: 520.9px;
+}
+
+.figma-weather .hourly-item-6 {
+  top: 552.67px;
+}
+.figma-weather .hourly-item-6 .time {
+  top: 561px;
+}
+.figma-weather .hourly-item-6 .temp {
+  top: 562.01px;
+}
+.figma-weather .hourly-item-6 .wind-speed {
+  top: 575px;
+}
+.figma-weather .hourly-item-6 .icon-wrapper {
+  left: 1264px;
+  top: 552.67px;
+}
+.figma-weather .hourly-item-6 .weather-icon {
+  width: 22.94px;
+  height: 22.94px;
+  left: 1277.74px;
+  top: 552.67px;
+}
+.figma-weather .hourly-item-6 .line-group {
+  left: 1216.88px;
+  top: 572.15px;
+}
+.figma-weather .hourly-item-6 .ellipse-34 {
+  top: 572.15px;
+}
+.figma-weather .hourly-item-6 .ellipse-35 {
+  top: 572.15px;
+}
+.figma-weather .hourly-item-6 .line-1 {
+  top: 574.02px;
+}
+.figma-weather .hourly-item-6 .line-2 {
+  top: 575.07px;
+}
+
+.figma-weather .hourly-item-7 {
+  top: 606.84px;
+}
+.figma-weather .hourly-item-7 .time {
+  left: 1135px;
+  top: 615px;
+}
+.figma-weather .hourly-item-7 .temp {
+  left: 1373.79px;
+  top: 616.18px;
+}
+.figma-weather .hourly-item-7 .wind-speed {
+  left: 1264px;
+  top: 630px;
+}
+.figma-weather .hourly-item-7 .icon-wrapper {
+  left: 1264px;
+  top: 606.84px;
+}
+.figma-weather .hourly-item-7 .weather-icon {
+  width: 22.94px;
+  height: 22.94px;
+  left: 1277.74px;
+  top: 606.84px;
+}
+.figma-weather .hourly-item-7 .line-group {
+  left: 1216.88px;
+  top: 626.32px;
+}
+.figma-weather .hourly-item-7 .ellipse-34 {
+  left: 1246.51px;
+  top: 626.32px;
+}
+.figma-weather .hourly-item-7 .ellipse-35 {
+  left: 1327.09px;
+  top: 626.33px;
+}
+.figma-weather .hourly-item-7 .line-1 {
+  left: 1216.88px;
+  top: 628.19px;
+}
+.figma-weather .hourly-item-7 .line-2 {
+  top: 629.24px;
+}
+
+.figma-weather .hourly-item-8 {
+  top: 661.01px;
+}
+.figma-weather .hourly-item-8 .time {
+  left: 1135px;
+  top: 669px;
+}
+.figma-weather .hourly-item-8 .temp {
+  left: 1373.79px;
+  top: 670.35px;
+}
+.figma-weather .hourly-item-8 .wind-speed {
+  left: 1264px;
+  top: 684px;
+}
+.figma-weather .hourly-item-8 .icon-wrapper {
+  left: 1264px;
+  top: 661.01px;
+}
+.figma-weather .hourly-item-8 .weather-icon {
+  width: 22.94px;
+  height: 22.94px;
+  left: 1277.74px;
+  top: 661.01px;
+}
+.figma-weather .hourly-item-8 .line-group {
+  left: 1216.88px;
+  top: 680.5px;
+}
+.figma-weather .hourly-item-8 .ellipse-34 {
+  top: 680.5px;
+}
+.figma-weather .hourly-item-8 .ellipse-35 {
+  top: 680.5px;
+}
+.figma-weather .hourly-item-8 .line-1 {
+  top: 682.36px;
+}
+.figma-weather .hourly-item-8 .line-2 {
+  top: 683.41px;
+}
+
+.figma-weather .hourly-item-9 {
+  top: 715.18px;
+}
+.figma-weather .hourly-item-9 .time {
+  left: 1135px;
+  top: 724px;
+}
+.figma-weather .hourly-item-9 .temp {
+  left: 1373.79px;
+  top: 724.52px;
+}
+.figma-weather .hourly-item-9 .wind-speed {
+  left: 1264px;
+  top: 738px;
+}
+.figma-weather .hourly-item-9 .icon-wrapper {
+  left: 1264px;
+  top: 715.18px;
+}
+.figma-weather .hourly-item-9 .weather-icon {
+  width: 22.94px;
+  height: 22.94px;
+  left: 1277.74px;
+  top: 715.18px;
+}
+.figma-weather .hourly-item-9 .line-group {
+  left: 1216.88px;
+  top: 734.67px;
+}
+.figma-weather .hourly-item-9 .ellipse-34 {
+  top: 734.67px;
+}
+.figma-weather .hourly-item-9 .ellipse-35 {
+  top: 734.67px;
+}
+.figma-weather .hourly-item-9 .line-1 {
+  top: 736.53px;
+}
+.figma-weather .hourly-item-9 .line-2 {
+  top: 737.58px;
+}
+
+.figma-weather .hourly-item-10 {
+  top: 769.35px;
+}
+.figma-weather .hourly-item-10 .time {
+  top: 778px;
+}
+.figma-weather .hourly-item-10 .temp {
+  top: 778.69px;
+}
+.figma-weather .hourly-item-10 .wind-speed {
+  top: 792px;
+}
+.figma-weather .hourly-item-10 .icon-wrapper {
+  left: 1264px;
+  top: 769.35px;
+}
+.figma-weather .hourly-item-10 .weather-icon {
+  width: 22.94px;
+  height: 22.94px;
+  left: 1277.74px;
+  top: 769.35px;
+}
+.figma-weather .hourly-item-10 .line-group {
+  top: 788.84px;
+}
+.figma-weather .hourly-item-10 .ellipse-34 {
+  top: 788.84px;
+}
+.figma-weather .hourly-item-10 .ellipse-35 {
+  top: 788.84px;
+}
+.figma-weather .hourly-item-10 .line-1 {
+  top: 790.7px;
+}
+.figma-weather .hourly-item-10 .line-2 {
+  top: 791.75px;
+}
+
+.figma-weather .hourly-item-11 {
+  top: 823.52px;
+}
+.figma-weather .hourly-item-11 .time {
+  top: 832px;
+}
+.figma-weather .hourly-item-11 .temp {
+  top: 832.86px;
+}
+.figma-weather .hourly-item-11 .wind-speed {
+  top: 846px;
+}
+.figma-weather .hourly-item-11 .icon-wrapper {
+  left: 1264px;
+  top: 823.52px;
+}
+.figma-weather .hourly-item-11 .weather-icon {
+  width: 22.94px;
+  height: 22.94px;
+  left: 1277.74px;
+  top: 823.52px;
+}
+.figma-weather .hourly-item-11 .line-group {
+  top: 843.01px;
+}
+.figma-weather .hourly-item-11 .ellipse-34 {
+  top: 843.01px;
+}
+.figma-weather .hourly-item-11 .ellipse-35 {
+  top: 843.01px;
+}
+.figma-weather .hourly-item-11 .line-1 {
+  top: 844.87px;
+}
+.figma-weather .hourly-item-11 .line-2 {
+  top: 845.92px;
+}
+
+.figma-weather .hourly-item-12 {
+  top: 878px;
+}
+.figma-weather .hourly-item-12 .time {
+  top: 886px;
+}
+.figma-weather .hourly-item-12 .temp {
+  top: 887.03px;
+}
+.figma-weather .hourly-item-12 .wind-speed {
+  top: 900.31px;
+}
+.figma-weather .hourly-item-12 .icon-wrapper {
+  left: 1264px;
+  top: 878px;
+}
+.figma-weather .hourly-item-12 .weather-icon {
+  width: 22.94px;
+  height: 22.94px;
+  left: 1277.74px;
+  top: 878px;
+}
+.figma-weather .hourly-item-12 .line-group {
+  top: 897.18px;
+}
+.figma-weather .hourly-item-12 .ellipse-34 {
+  top: 897.18px;
+}
+.figma-weather .hourly-item-12 .ellipse-35 {
+  top: 897.18px;
+}
+.figma-weather .hourly-item-12 .line-1 {
+  top: 899.04px;
+}
+.figma-weather .hourly-item-12 .line-2 {
+  top: 900.09px;
+}
+
+/* Weekly Forecast Panel */
+.figma-weather .weekly-forecast-panel-wrapper {
+  left: 92px;
+  top: 664px;
+  width: 865px;
+  height: 266px;
+  background: rgba(177, 191, 191, 0.6);
+  border-radius: 24px;
+}
+
+/* Weekly Item Base */
+.figma-weather .weekly-item-base {
+  position: absolute;
+}
+
+.figma-weather .weekly-item-base .cloud-icon {
+  filter: drop-shadow(0px 6px 4px rgba(0, 0, 0, 0.25));
+}
+
+.figma-weather .weekly-item-base .temp {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 61px;
+  color: #FFFFFF;
+}
+
+.figma-weather .weekly-item-base .temp-unit {
+  font-family: 'Gelica'; /* Assuming Gelica is a custom font or fallback to Inter */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 26px;
+  color: #FFFFFF;
+}
+
+.figma-weather .weekly-item-base .day-label {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 29px;
+  color: #FFFFFF;
+}
+
+/* Specific weekly items */
+.figma-weather .weekly-item-1 {
+  left: 149px;
+  top: 722px;
+  width: 62px;
+  height: 43.26px;
+}
+.figma-weather .weekly-item-1 .cloud-icon {
+  left: 0;
+  top: 0;
+  width: 62px;
+  height: 43.26px;
+  background: url('/icons/cloud.svg');
+}
+.figma-weather .weekly-item-1 .temp {
+  left: 0;
+  top: 70px;
+  width: 63px;
+  height: 52px;
+}
+.figma-weather .weekly-item-1 .temp-unit {
+  left: 48px;
+  top: 73px;
+  width: 36px;
+  height: 19px;
+}
+.figma-weather .weekly-item-1 .day-label {
+  left: 10px;
+  top: 136px;
+  width: 43px;
+  height: 29px;
+} /* Sun */
+
+.figma-weather .weekly-item-2 {
+  left: 288px;
+  top: 708px;
+  width: 62px;
+  height: 56.95px;
+}
+.figma-weather .weekly-item-2 .cloud-icon {
+  left: 0;
+  top: 0;
+  width: 62px;
+  height: 56.95px;
+  background: url('/icons/partly_cloudy_day.svg');
+}
+.figma-weather .weekly-item-2 .temp {
+  left: 0;
+  top: 84px;
+  width: 63px;
+  height: 52px;
+}
+.figma-weather .weekly-item-2 .temp-unit {
+  left: 48px;
+  top: 87px;
+  width: 36px;
+  height: 19px;
+}
+.figma-weather .weekly-item-2 .day-label {
+  left: 10px;
+  top: 150px;
+  width: 50px;
+  height: 29px;
+} /* Mon */
+
+.figma-weather .weekly-item-3 {
+  left: 431px;
+  top: 712px;
+  width: 62px;
+  height: 62px;
+}
+.figma-weather .weekly-item-3 .cloud-icon {
+  left: 0;
+  top: 0;
+  width: 62px;
+  height: 62px;
+  background: url('/icons/thunderstorm.svg');
+}
+.figma-weather .weekly-item-3 .temp {
+  left: 0;
+  top: 80px;
+  width: 63px;
+  height: 52px;
+}
+.figma-weather .weekly-item-3 .temp-unit {
+  left: 48px;
+  top: 83px;
+  width: 36px;
+  height: 19px;
+}
+.figma-weather .weekly-item-3 .day-label {
+  left: 10px;
+  top: 146px;
+  width: 42px;
+  height: 29px;
+} /* Tue */
+
+.figma-weather .weekly-item-4 {
+  left: 566px;
+  top: 716px;
+  width: 62px;
+  height: 62px;
+}
+.figma-weather .weekly-item-4 .cloud-icon {
+  left: 0;
+  top: 0;
+  width: 62px;
+  height: 62px;
+  background: url('/icons/snow.svg');
+}
+.figma-weather .weekly-item-4 .temp {
+  left: 0;
+  top: 76px;
+  width: 63px;
+  height: 52px;
+}
+.figma-weather .weekly-item-4 .temp-unit {
+  left: 48px;
+  top: 79px;
+  width: 36px;
+  height: 19px;
+}
+.figma-weather .weekly-item-4 .day-label {
+  left: 10px;
+  top: 142px;
+  width: 50px;
+  height: 29px;
+} /* Wed */
+
+.figma-weather .weekly-item-5 {
+  left: 698px;
+  top: 716px;
+  width: 62px;
+  height: 43.26px;
+}
+.figma-weather .weekly-item-5 .cloud-icon {
+  left: 0;
+  top: 0;
+  width: 62px;
+  height: 43.26px;
+  background: url('/icons/cloud.svg');
+}
+.figma-weather .weekly-item-5 .temp {
+  left: 0;
+  top: 76px;
+  width: 63px;
+  height: 52px;
+}
+.figma-weather .weekly-item-5 .temp-unit {
+  left: 48px;
+  top: 79px;
+  width: 36px;
+  height: 19px;
+}
+.figma-weather .weekly-item-5 .day-label {
+  left: 10px;
+  top: 142px;
+  width: 44px;
+  height: 29px;
+} /* Thu */
+
+.figma-weather .weekly-item-6 {
+  left: 828px;
+  top: 708px;
+  width: 62px;
+  height: 56.95px;
+}
+.figma-weather .weekly-item-6 .cloud-icon {
+  left: 0;
+  top: 0;
+  width: 62px;
+  height: 56.95px;
+  background: url('/icons/partly_cloudy_day.svg');
+}
+.figma-weather .weekly-item-6 .temp {
+  left: 0;
+  top: 84px;
+  width: 63px;
+  height: 52px;
+}
+.figma-weather .weekly-item-6 .temp-unit {
+  left: 48px;
+  top: 87px;
+  width: 36px;
+  height: 19px;
+}
+.figma-weather .weekly-item-6 .day-label {
+  left: 10px;
+  top: 150px;
+  width: 29px;
+  height: 29px;
+} /* Fri */
+
+/* TL image */
+.figma-weather .tl-image {
+  position: absolute;
+  width: 346px;
+  height: 110px;
+  left: 1101px;
+  top: 91px;
+  background: url('/bg/tl.png'); /* Assuming tl.png is in public/bg */
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Image 6 */
+.figma-weather .image-6 {
+  position: absolute;
+  width: 463px;
+  height: 347px;
+  left: 1049px;
+  top: -26px;
+  background: url('/bg/image.png'); /* Assuming image.png is in public/bg */
+  background-size: contain;
+  background-repeat: no-repeat;
+}
