@@ -24,3 +24,4 @@ export const GameState = {
   CONNECTING: 'connecting',
   SUBMITTING: 'submitting'
 };
+

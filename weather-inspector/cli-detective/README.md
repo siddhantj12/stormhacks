@@ -141,3 +141,4 @@ DEBUG=* npm start
 ## License
 
 This project is part of the Weather Inspector application.
+
